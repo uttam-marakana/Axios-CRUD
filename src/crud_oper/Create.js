@@ -1,63 +1,70 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
+import { createUser } from "../api/apiService";
 
 const Create = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
   const navigate = useNavigate();
+  const { setToast } = useOutletContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Data Added");
-    axios
-      .post("https://649c002304807571923749f3.mockapi.io/Crud-Operation", {
-        name: name,
-        email: email,
-      })
+
+    createUser({ name, email })
       .then(() => {
+        setToast({
+          message: "Data created successfully",
+          type: "success",
+        });
         navigate("/read");
+      })
+      .catch((err) => {
+        setToast({
+          message: err.message,
+          type: "error",
+        });
       });
   };
 
   return (
     <>
-      <div className="d-flex justify-content-between my-2">
-      <h3>Create Page</h3>
-      <NavLink to="/read">
-      <button className="btn btn-primary">Show Data</button>
-      </NavLink>
+      <div className="page-header">
+        <h3 className="page-title">Create Data</h3>
+
+        <NavLink to="/read">
+          <button className="primary-btn">Show Data</button>
+        </NavLink>
       </div>
-      <form>
-        <div className="mb-3">
-          <label className="form-label ">Name</label>
-          <input
-            type="text"
-            id="name"
-            className="form-control"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
 
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-          <input
-            type="email"
-            id="email"
-            className="form-control"
-            aria-describedby="emailHelp"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+      <div className="card form-wrapper">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label">Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmit}
-        >
-          Submit
-        </button>
-      </form>
+          <div className="form-group">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-actions">
+            <button className="primary-btn">Submit</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

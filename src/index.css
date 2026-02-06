@@ -1,6 +1,4 @@
-/* =====================================================
-   RESET & BASE
-===================================================== */
+/* ================= RESET ================= */
 
 * {
   margin: 0;
@@ -8,34 +6,116 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f8;
-  color: #222;
-  line-height: 1.5;
+  height: 100%;
+  font-family:
+    system-ui,
+    -apple-system,
+    Arial,
+    sans-serif;
+}
+
+/* ================= UI TOKENS ================= */
+
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+
+  --bg-color: #f4f6f8;
+  --text-color: #111827;
+
+  --header-bg: #ffffff;
+  --sidebar-bg: #1f2937;
+  --footer-bg: #020617;
+
+  --card-bg: #ffffff;
+
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-text: #111827;
+
+  --button-bg: #2563eb;
+  --button-hover: #1d4ed8;
+  --button-text: #ffffff;
+
+  --menu-hover: #374151;
+  --menu-active: #4b5563;
+
+  --border-color: #e5e7eb;
+
+  --chart-grid: #e5e7eb;
+  --chart-text: #374151;
+}
+
+/* ================= DARK THEME ================= */
+
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --text-color: #e5e7eb;
+
+  --header-bg: #020617;
+  --sidebar-bg: #020617;
+  --footer-bg: #000000;
+
+  --card-bg: #020617;
+
+  --input-bg: #020617;
+  --input-border: #1e293b;
+  --input-text: #e5e7eb;
+
+  --button-bg: #3b82f6;
+  --button-hover: #2563eb;
+
+  --menu-hover: #1e293b;
+  --menu-active: #334155;
+
+  --border-color: #1e293b;
+
+  --chart-grid: #1e293b;
+  --chart-text: #cbd5f5;
+}
+
+/* ================= BASE ================= */
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--text-md);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 a {
   text-decoration: none;
   color: inherit;
 }
-
 button {
   border: none;
   cursor: pointer;
   background: none;
 }
 
-/* =====================================================
-   LAYOUT STRUCTURE
-===================================================== */
+/* ================= LAYOUT ================= */
 
 .app-layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
 .main-wrapper {
   display: flex;
   flex: 1;
@@ -43,19 +123,16 @@ button {
 
 .content {
   flex: 1;
-  padding: 20px;
-  background: #ffffff;
-  transition: margin-left 0.3s ease;
+  padding: var(--space-lg);
+  background: var(--card-bg);
 }
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* ================= HEADER ================= */
 
 .header {
-  background: #222;
-  color: white;
-  padding: 15px 20px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-md) var(--space-lg);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -64,27 +141,27 @@ button {
 .header-inner {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
 }
 
 .menu-toggle {
-  font-size: 22px;
   display: none;
-  color: white;
+  font-size: var(--text-xl);
+}
+.theme-toggle {
+  font-size: var(--text-lg);
 }
 
-/* =====================================================
-   SIDEBAR
-===================================================== */
+/* ================= SIDEBAR ================= */
 
 .sidebar {
   width: 240px;
-  background: #333;
+  background: var(--sidebar-bg);
   color: white;
-  padding: 20px;
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-sm);
   transition: all 0.3s ease;
 }
 
@@ -92,141 +169,188 @@ button {
   width: 70px;
 }
 
-.sidebar a {
-  padding: 10px;
-  border-radius: 4px;
-  transition: background 0.2s ease;
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
 }
 
-.sidebar a:hover {
-  background: #444;
+.menu-item:hover {
+  background: var(--menu-hover);
 }
-
 .sidebar a.active {
-  background: #555;
+  background: var(--menu-active);
+}
+.sidebar.collapsed .menu-text {
+  display: none;
 }
 
-.collapse-btn {
+/* ================= FORMS ================= */
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--button-bg);
+}
+
+/* ================= BUTTONS ================= */
+
+.primary-btn {
+  background: var(--button-bg);
+  color: var(--button-text);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+}
+
+.primary-btn:hover {
+  background: var(--button-hover);
+}
+
+.btn-success {
+  background: #16a34a;
   color: white;
-  margin-bottom: 10px;
-  text-align: right;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
 }
 
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer {
-  background: #111;
+.btn-danger {
+  background: #dc2626;
   color: white;
-  padding: 30px 20px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+/* ================= CARD ================= */
+
+.card {
+  background: var(--card-bg);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
 }
 
-.footer h3,
-.footer h4 {
-  margin-bottom: 10px;
+/* ================= TABLE ================= */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
 }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #333;
-  font-size: 14px;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
 }
 
-/* =====================================================
-   OVERLAY (Mobile Drawer)
-===================================================== */
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
 
-.overlay {
+.table th {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ================= PAGINATION ================= */
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: var(--space-md);
+}
+
+.page-btn {
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+}
+
+.page-btn.active {
+  background: var(--button-bg);
+  color: white;
+}
+
+/* ================= SKELETON ================= */
+
+.skeleton-row {
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 25%,
+    rgba(0, 0, 0, 0.12) 37%,
+    rgba(0, 0, 0, 0.06) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton 1.4s infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* ================= TOAST ================= */
+
+.toast {
   position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 9;
+  top: 20px;
+  right: 20px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  color: white;
+  z-index: 999;
+  animation: slideIn 0.3s ease;
 }
 
-/* =====================================================
-   RESPONSIVE BREAKPOINTS
-===================================================== */
+.toast-success {
+  background: #16a34a;
+}
+.toast-error {
+  background: #dc2626;
+}
 
-/* ===== DESKTOP (1200px+) ===== */
-@media (min-width: 1200px) {
-  .content {
-    padding: 25px 30px;
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-/* ===== MINI LAPTOP (992px - 1199px) ===== */
-@media (max-width: 1199px) {
-  .sidebar {
-    width: 200px;
-  }
+/* ================= RESPONSIVE ================= */
 
-  .sidebar.collapsed {
-    width: 60px;
-  }
-}
-
-/* ===== TABLET (768px - 991px) ===== */
 @media (max-width: 991px) {
-
   .main-wrapper {
     flex-direction: column;
   }
-
-  .sidebar {
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 15px;
-  }
-
-  .sidebar.collapsed {
-    width: 100%;
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
-/* ===== MOBILE (<= 767px) ===== */
 @media (max-width: 767px) {
-
   .menu-toggle {
     display: block;
-  }
-
-  .sidebar {
-    position: fixed;
-    left: -260px;
-    top: 0;
-    height: 100%;
-    width: 240px;
-    z-index: 10;
-    flex-direction: column;
-  }
-
-  .sidebar.open {
-    left: 0;
-  }
-
-  .main-wrapper {
-    flex-direction: column;
-  }
-
-  .content {
-    padding: 15px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
   }
 }

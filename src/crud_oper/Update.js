@@ -1,13 +1,14 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
+import { updateUser } from "../api/apiService";
 
-function Update() {
-  const [id, setId] = useState(0);
+const Update = () => {
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
+  const { setToast } = useOutletContext();
 
   useEffect(() => {
     setId(localStorage.getItem("id"));
@@ -15,60 +16,64 @@ function Update() {
     setEmail(localStorage.getItem("email"));
   }, []);
 
-  const handleUpdate = async (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
-    console.log("Id...", id);
-    await axios
-      .put(`https://649c002304807571923749f3.mockapi.io/Crud-Operation/${id}`, {
-        name: name,
-        email: email,
-      })
+
+    updateUser(id, { name, email })
       .then(() => {
+        setToast({
+          message: "Updated successfully",
+          type: "success",
+        });
         navigate("/read");
+      })
+      .catch((err) => {
+        setToast({
+          message: err.message,
+          type: "error",
+        });
       });
   };
 
   return (
     <>
-      <h3>Update Page</h3>
-      <form>
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            className="form-control"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="form-label">Email address</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            className="form-control"
-            aria-describedby="emailHelp"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="btn btn-primary mx-2"
-          onClick={handleUpdate}
-        >
-          Update
-        </button>
+      <div className="page-header">
+        <h3 className="page-title">Update Data</h3>
 
         <NavLink to="/read">
-          <button className="btn btn-info">Back To Read Page</button>
+          <button className="primary-btn">Back</button>
         </NavLink>
-      </form>
+      </div>
+
+      <div className="card form-wrapper">
+        <form onSubmit={handleUpdate}>
+          <div className="form-group">
+            <label className="form-label">Name</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-actions">
+            <button className="primary-btn">Update</button>
+          </div>
+        </form>
+      </div>
     </>
   );
-}
+};
 
 export default Update;
