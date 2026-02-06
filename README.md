@@ -1,164 +1,124 @@
-Axios CRUD React Application 
+Axios CRUD React Application
 
-A simple CRUD (Create, Read, Update, Delete) application built using React.js and Axios. 
+A simple CRUD (Create, Read, Update, Delete) application built using React.js and Axios.
+This project demonstrates how to perform API operations, manage state, and navigate between pages using React Router.
 
-This project demonstrates API integration, routing, and state handling in a modular React application. 
+The application allows users to create records, view stored data, update entries, and delete records through a REST API.
 
-The app allows users to create records, view stored data, update entries, and delete records using a REST API. 
+🚀 Features
 
- 
+✅ Create new records
 
-🚀 Features 
+✅ Read and display API data
 
-Create new data entries 
+✅ Update existing records
 
-Read and display API data 
+✅ Delete records
 
-Update existing records 
+✅ Axios-based API communication
 
-Delete records 
+✅ React Router navigation
 
-Axios-based API requests 
+✅ Component-based structure
 
-React Router navigation 
+🛠️ Tech Stack
 
-Component-based structure 
+React.js
 
-Clean and beginner-friendly architecture 
+Axios
 
- 
+React Router DOM
 
-🛠️ Tech Stack 
+JavaScript (ES6+)
 
-React.js 
+HTML5 & CSS3
 
-Axios 
+Yarn Package Manager
 
-React Router DOM 
+📁 Project Structure
+src/
+│
+├── crud_oper/
+│   ├── Create.js
+│   ├── Read.js
+│   └── Update.js
+│
+├── App.js
+├── App.css
+├── index.js
+└── index.css
 
-JavaScript (ES6+) 
+⚙️ Installation & Setup
+1️⃣ Clone the repository
+git clone https://github.com/your-username/axios-crud.git
 
-HTML5 / CSS3 
+2️⃣ Navigate into the project folder
+cd axios-crud
 
-Yarn 
+3️⃣ Install dependencies
+yarn install
 
- 
+4️⃣ Start the development server
+yarn start
 
-📁 Project Structure 
 
-src/ 
-│ 
-├── crud_oper/ 
-│   ├── Create.js     # Create new record 
-│   ├── Read.js       # Display data 
-│   └── Update.js     # Update existing record 
-│ 
-├── App.js 
-├── App.css 
-├── index.js 
-└── index.css 
- 
+The application will run on:
 
- 
+http://localhost:3000
 
-⚙️ Installation & Setup 
+🔌 API Usage
 
-1️⃣ Clone Repository 
+Axios is used to perform HTTP requests.
 
-git clone https://github.com/your-username/axios-crud.git 
- 
+Example:
 
-2️⃣ Navigate to Project Folder 
+axios.post("API_URL", {
+  name: name,
+  email: email
+});
 
-cd axios-crud 
- 
 
-3️⃣ Install Dependencies 
+You can connect this project to:
 
-yarn install 
- 
+MockAPI
 
-4️⃣ Start Development Server 
+JSON Server
 
-yarn start 
- 
+Node.js / Express backend
 
- 
+Any REST API
 
-🔌 API Integration 
+🔄 Application Flow
 
-Axios is used to perform HTTP requests. 
+User submits data from the Create page
 
-Example: 
+Axios sends POST request to API
 
-axios.post("API_URL", { 
- name: name, 
- email: email 
-}); 
- 
+User is redirected to the Read page
 
-The project currently uses a mock API endpoint and can easily be connected to: 
+Data is fetched and displayed
 
-JSON Server 
+Records can be edited or deleted
 
-Mock API 
+📌 Future Improvements
 
-Node.js / Express backend 
+Form validation
 
-Any REST API 
+Loading & error states
 
- 
+API service layer
 
-🔄 Application Flow 
+Pagination
 
-User enters data in Create component 
+UI improvements
 
-Data is sent to API using Axios POST request 
+Authentication support
 
-User is redirected to Read page 
+👨‍💻 Author
 
-Read page fetches and displays data 
+Uttam Marakana
+React Developer | Shopify Developer
 
-User can update or delete records 
+📄 License
 
- 
-
-📌 Future Improvements 
-
-Form validation 
-
-Loading & error handling 
-
-API service layer abstraction 
-
-Better UI styling 
-
-Pagination support 
-
-Reusable form components 
-
- 
-
-👨‍💻 Author 
-
-Uttam Marakana 
-
-React Developer | Shopify Developer 
-
- 
-
-📄 License 
-
-This project is open-sourced and intended for learning purposes. 
-
- 
-
-Cross-Aligned Actions 
-
-💰 Monetisation 
-
-Turn this into a reusable CRUD starter kit. You’ll reduce setup time for dashboards, admin panels, or internal tools. 
-
-📊 Performance Metric 
-
-Track API response handling and unnecessary re-renders in Read component as data grows. 
+This project is open-source and available for learning purposes
