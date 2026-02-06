@@ -1,41 +1,38 @@
-**Axios CRUD React Application**
+# 📘 Axios CRUD React Application
 
-  A simple CRUD (Create, Read, Update, Delete) application built using React.js and Axios.
-This project demonstrates how to perform API operations, manage state, and navigate between pages using React Router.
+A simple **CRUD (Create, Read, Update, Delete)** application built using **React.js** and **Axios**.
+This project demonstrates how to perform API operations, manage component state, and navigate between pages using **React Router**.
 
 The application allows users to create records, view stored data, update entries, and delete records through a REST API.
 
-**🚀 Features**
+---
 
-  ✅ Create new records
+## 🚀 Features
 
-  ✅ Read and display API data
+* ✅ Create new records
+* ✅ Read and display API data
+* ✅ Update existing records
+* ✅ Delete records
+* ✅ Axios-based API communication
+* ✅ React Router navigation
+* ✅ Component-based architecture
 
-  ✅ Update existing records
+---
 
-  ✅ Delete records
+## 🛠️ Tech Stack
 
-  ✅ Axios-based API communication
+* React.js
+* Axios
+* React Router DOM
+* JavaScript (ES6+)
+* HTML5 & CSS3
+* Yarn Package Manager
 
-  ✅ React Router navigation
-  
-  ✅ Component-based structure
+---
 
-🛠️ Tech Stack
+## 📁 Project Structure
 
-React.js
-
-Axios
-
-React Router DOM
-
-JavaScript (ES6+)
-
-HTML5 & CSS3
-
-Yarn Package Manager
-
-📁 Project Structure
+```
 src/
 │
 ├── crud_oper/
@@ -47,78 +44,96 @@ src/
 ├── App.css
 ├── index.js
 └── index.css
+```
 
-⚙️ Installation & Setup
-1️⃣ Clone the repository
-git clone https://github.com/your-username/axios-crud.git
+---
 
-2️⃣ Navigate into the project folder
-cd axios-crud
+## ⚙️ Installation & Setup
 
-3️⃣ Install dependencies
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/uttam-marakana/Axios-CRUD.git
+```
+
+### 2️⃣ Navigate into the project folder
+
+```bash
+cd Axios-CRUD
+```
+
+### 3️⃣ Install dependencies
+
+```bash
 yarn install
+```
 
-4️⃣ Start the development server
+### 4️⃣ Start the development server
+
+```bash
 yarn start
-
+```
 
 The application will run on:
 
+```
 http://localhost:3000
+```
 
-🔌 API Usage
+---
+
+## 🔌 API Usage
 
 Axios is used to perform HTTP requests.
 
 Example:
 
+```JavaScript
 axios.post("API_URL", {
   name: name,
   email: email
 });
-
+```
 
 You can connect this project to:
 
-MockAPI
+* MockAPI
+* JSON Server
+* Node.js / Express backend
+* Any REST API
 
-JSON Server
+---
 
-Node.js / Express backend
+## 🔄 Application Flow
 
-Any REST API
+1. User submits data from the **Create** page
+2. Axios sends a POST request to the API
+3. User is redirected to the Read page
+4. Data is fetched and displayed
+5. Records can be updated or deleted
 
-🔄 Application Flow
+---
 
-User submits data from the Create page
+## 📌 Future Improvements
 
-Axios sends POST request to API
+* Form validation
+* Loading and error handling
+* API service layer abstraction
+* Pagination
+* UI improvements
+* Authentication support
 
-User is redirected to the Read page
+---
 
-Data is fetched and displayed
+## 👨‍💻 Author
 
-Records can be edited or deleted
-
-📌 Future Improvements
-
-Form validation
-
-Loading & error states
-
-API service layer
-
-Pagination
-
-UI improvements
-
-Authentication support
-
-👨‍💻 Author
-
-Uttam Marakana
+**Uttam Marakana**
 React Developer | Shopify Developer
 
-📄 License
+---
 
-This project is open-source and available for learning purposes
+## 📄 License
+
+This project is open-source and available for learning purposes.
+
+---
