@@ -1,7 +1,7 @@
+import Layout from "./layout/Layout";
 import Create from "./crud_oper/Create";
 import Read from "./crud_oper/Read";
 import Update from "./crud_oper/Update";
-import Layout from "./layout/Layout";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
