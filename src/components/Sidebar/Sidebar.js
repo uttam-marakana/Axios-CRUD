@@ -1,15 +1,21 @@
 import { NavLink } from "react-router-dom";
+import { FaPlus, FaList, FaEdit } from "react-icons/fa";
 
 const Sidebar = ({ sidebarOpen, collapsed, setCollapsed, closeSidebar }) => {
+  const menuItems = [
+    { name: "Create", path: "/", icon: <FaPlus /> },
+    { name: "Read", path: "/read", icon: <FaList /> },
+    { name: "Update", path: "/update", icon: <FaEdit /> },
+  ];
+
   return (
     <>
-      {/* Overlay for mobile */}
       {sidebarOpen && <div className="overlay" onClick={closeSidebar}></div>}
 
       <aside
         className={`sidebar 
-        ${sidebarOpen ? "open" : ""} 
-        ${collapsed ? "collapsed" : ""}`}
+          ${sidebarOpen ? "open" : ""} 
+          ${collapsed ? "collapsed" : ""}`}
       >
         <button
           className="collapse-btn"
@@ -18,17 +24,18 @@ const Sidebar = ({ sidebarOpen, collapsed, setCollapsed, closeSidebar }) => {
           {collapsed ? "➜" : "⬅"}
         </button>
 
-        <NavLink to="/" onClick={closeSidebar}>
-          Create
-        </NavLink>
+        {menuItems.map((item, index) => (
+          <NavLink
+            key={index}
+            to={item.path}
+            onClick={closeSidebar}
+            className="menu-item"
+          >
+            <span className="menu-icon">{item.icon}</span>
 
-        <NavLink to="/read" onClick={closeSidebar}>
-          Read
-        </NavLink>
-
-        <NavLink to="/update" onClick={closeSidebar}>
-          Update
-        </NavLink>
+            {!collapsed && <span className="menu-text">{item.name}</span>}
+          </NavLink>
+        ))}
       </aside>
     </>
   );

@@ -6,14 +6,7 @@ const Footer = () => {
           <h3>AxiosCRUD</h3>
           <p>React CRUD Application using Axios.</p>
         </div>
-
-        <div>
-          <h4>Menu</h4>
-          <p>Create</p>
-          <p>Read</p>
-          <p>Update</p>
-        </div>
-
+        
         <div>
           <h4>Address</h4>
           <p>Rajkot, Gujarat, India</p>
