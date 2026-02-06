@@ -1,18 +1,32 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { useState } from "react";
+import Header from "../components/Header/Header";
+import Sidebar from "../components/Sidebar/Sidebar";
+import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  return (
-    <>
-      <Header />
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
-      <main className="container" style={{ minHeight: "80vh" }}>
-        <Outlet />
-      </main>
+  return (
+    <div className="app-layout">
+      <Header toggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
+
+      <div className="main-wrapper">
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+          closeSidebar={() => setSidebarOpen(false)}
+        />
+
+        <main className="content">
+          <Outlet />
+        </main>
+      </div>
 
       <Footer />
-    </>
+    </div>
   );
 };
 

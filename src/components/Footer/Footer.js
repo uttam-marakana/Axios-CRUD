@@ -1,5 +1,3 @@
-import React from "react";
-
 const Footer = () => {
   return (
     <footer className="footer">
@@ -11,19 +9,14 @@ const Footer = () => {
 
         <div>
           <h4>Menu</h4>
-          <ul>
-            <li>Create</li>
-            <li>Read</li>
-            <li>Update</li>
-          </ul>
+          <p>Create</p>
+          <p>Read</p>
+          <p>Update</p>
         </div>
 
         <div>
           <h4>Address</h4>
-          <p>
-            Rajkot, Gujarat <br />
-            India
-          </p>
+          <p>Rajkot, Gujarat, India</p>
         </div>
       </div>
 
