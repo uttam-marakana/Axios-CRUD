@@ -1,25 +1,25 @@
-Axios CRUD React Application
+**Axios CRUD React Application**
 
-A simple CRUD (Create, Read, Update, Delete) application built using React.js and Axios.
+  A simple CRUD (Create, Read, Update, Delete) application built using React.js and Axios.
 This project demonstrates how to perform API operations, manage state, and navigate between pages using React Router.
 
 The application allows users to create records, view stored data, update entries, and delete records through a REST API.
 
-🚀 Features
+**🚀 Features**
 
-✅ Create new records
+  ✅ Create new records
 
-✅ Read and display API data
+  ✅ Read and display API data
 
-✅ Update existing records
+  ✅ Update existing records
 
-✅ Delete records
+  ✅ Delete records
 
-✅ Axios-based API communication
+  ✅ Axios-based API communication
 
-✅ React Router navigation
-
-✅ Component-based structure
+  ✅ React Router navigation
+  
+  ✅ Component-based structure
 
 🛠️ Tech Stack
 
