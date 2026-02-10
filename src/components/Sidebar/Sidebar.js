@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { FaPlus, FaList, FaEdit } from "react-icons/fa";
+import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
+
 
 const Sidebar = ({ sidebarOpen, collapsed, setCollapsed, closeSidebar }) => {
   const menuItems = [
     { name: "Create", path: "/", icon: <FaPlus /> },
-    { name: "Read", path: "/read", icon: <FaList /> },
-    { name: "Update", path: "/update", icon: <FaEdit /> },
+    { name: "Read", path: "/read", icon: <FaList /> }
   ];
 
   return (
@@ -21,7 +22,7 @@ const Sidebar = ({ sidebarOpen, collapsed, setCollapsed, closeSidebar }) => {
           className="collapse-btn"
           onClick={() => setCollapsed(!collapsed)}
         >
-          {collapsed ? "➜" : "⬅"}
+          {collapsed ? <AiOutlineMenuUnfold /> : <AiOutlineMenuFold />}
         </button>
 
         {menuItems.map((item, index) => (

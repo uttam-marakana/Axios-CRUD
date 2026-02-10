@@ -21,9 +21,10 @@ const Layout = () => {
           setCollapsed={setCollapsed}
           closeSidebar={() => setSidebarOpen(false)}
         />
-
         <main className="content">
-          <Outlet context={{ setToast }} />
+          <div className="container">
+            <Outlet context={{ setToast }} />
+          </div>
         </main>
       </div>
 

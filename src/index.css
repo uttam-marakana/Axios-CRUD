@@ -1,6 +1,4 @@
-/* =========================
-   RESET
-========================= */
+/* ====== RESET ====== */
 
 *,
 *::before,
@@ -15,9 +13,7 @@ html, body {
   font-family: system-ui, -apple-system, Arial, sans-serif;
 }
 
-/* =========================
-   DESIGN TOKENS
-========================= */
+/* ====== DESIGN TOKENS (LIGHT UI) ====== */
 
 :root {
   --space-xs: 4px;
@@ -30,49 +26,36 @@ html, body {
   --radius-md: 6px;
   --radius-lg: 10px;
 
-  --bg-color: #f4f6f8;
-  --text-color: #111827;
-  --border-color: #e5e7eb;
+  /* MAIN COLORS */
+  --bg-color: #f7f8fa;
+  --text-color: #1f2937;
+  --border-color: #e6e8ec;
 
+  /* SURFACES */
   --header-bg: #ffffff;
-  --sidebar-bg: #1f2937;
-  --footer-bg: #020617;
+  --sidebar-bg: #ffffff;
+  --footer-bg: #ffffff;
   --card-bg: #ffffff;
 
+  /* INPUTS */
   --input-bg: #ffffff;
-  --input-border: #d1d5db;
+  --input-border: #dcdfe4;
 
+  /* ACTION */
   --button-bg: #2563eb;
   --button-hover: #1d4ed8;
 
-  --menu-hover: #374151;
-  --menu-active: #4b5563;
+  /* MENU */
+  --menu-hover: #f1f3f6;
+  --menu-active: #e9edf3;
 }
 
-/* DARK MODE */
-
-[data-theme="dark"] {
-  --bg-color: #0f172a;
-  --text-color: #e5e7eb;
-  --border-color: #1e293b;
-
-  --header-bg: #020617;
-  --sidebar-bg: #020617;
-  --footer-bg: #000;
-
-  --card-bg: #020617;
-  --input-bg: #020617;
-  --input-border: #1e293b;
-}
-
-/* =========================
-   GLOBAL
-========================= */
+/* ====== GLOBAL ====== */
 
 body {
   background: var(--bg-color);
   color: var(--text-color);
-  transition: background .3s ease, color .3s ease;
+  transition: background .25s ease, color .25s ease;
 }
 
 button {
@@ -86,9 +69,7 @@ a {
   color: inherit;
 }
 
-/* =========================
-   CONTAINER SYSTEM
-========================= */
+/* ====== CONTAINER ====== */
 
 .container {
   width: 100%;
@@ -100,13 +81,12 @@ a {
   flex: 1;
   padding: var(--space-xl);
   display: flex;
+  background: #f6f7f9;
   flex-direction: column;
   gap: var(--space-lg);
 }
 
-/* =========================
-   LAYOUT
-========================= */
+/* ====== LAYOUT ====== */
 
 .app-layout {
   display: flex;
@@ -120,25 +100,28 @@ a {
   min-height: 0;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ====== HEADER ====== */
 
 .header {
   background: var(--header-bg);
   border-bottom: 1px solid var(--border-color);
-  padding: var(--space-md) var(--space-lg);
+  padding: 14px 24px;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
   align-items: center;
-  justify-content: space-between;
 }
 
 .menu-toggle,
@@ -151,20 +134,19 @@ a {
 
 .menu-toggle:hover,
 .theme-toggle:hover {
-  background: rgba(0,0,0,0.06);
+  background: #f3f4f6;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+/* ====== SIDEBAR ====== */
 
 .sidebar {
   width: 240px;
-  background: var(--sidebar-bg);
-  color: white;
+  background: #fafbfc;
+  border-right: 1px solid var(--border-color);
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-sm);
   transition: 0.3s ease;
 }
@@ -173,11 +155,20 @@ a {
   width: 70px;
 }
 
+.collapse-btn {
+  align-self: flex-end;
+  font-size: 16px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: .2s ease;
+}
+
 .menu-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
   gap: var(--space-md);
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: var(--radius-md);
   transition: 0.2s ease;
 }
@@ -186,13 +177,17 @@ a {
   background: var(--menu-hover);
 }
 
-.sidebar a.active {
-  background: var(--menu-active);
+.menu-toggle svg, .collapse-btn svg {
+  width: 2.2rem;
+  height: 2rem;
 }
 
-/* =========================
-   PAGE HEADER
-========================= */
+.sidebar a.active {
+  background: var(--menu-active);
+  font-weight: 500;
+}
+
+/* ====== PAGE HEADER ====== */
 
 .page-header {
   display: flex;
@@ -206,20 +201,17 @@ a {
   font-weight: 600;
 }
 
-/* =========================
-   CARD
-========================= */
+/* ====== CARD ====== */
 
 .card {
   background: var(--card-bg);
   padding: var(--space-lg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 
-/* =========================
-   FORM
-========================= */
+/* ====== FORM ====== */
 
 .form-group {
   margin-bottom: var(--space-md);
@@ -229,6 +221,7 @@ a {
   display: block;
   margin-bottom: 6px;
   font-size: 14px;
+  color: #4b5563;
 }
 
 input,
@@ -244,11 +237,10 @@ select {
 input:focus {
   outline: none;
   border-color: var(--button-bg);
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.08);
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* ====== BUTTONS ====== */
 
 .primary-btn {
   background: var(--button-bg);
@@ -276,18 +268,14 @@ input:focus {
   border-radius: var(--radius-md);
 }
 
-/* =========================
-   SEARCH INPUT
-========================= */
+/* ====== SEARCH ====== */
 
 .search-input {
   max-width: 420px;
   margin-bottom: var(--space-md);
 }
 
-/* =========================
-   TABLE
-========================= */
+/* ====== TABLE ====== */
 
 .table-wrapper {
   overflow-x: auto;
@@ -308,17 +296,15 @@ input:focus {
 }
 
 .table th {
-  background: rgba(0,0,0,0.03);
+  background: #f9fafb;
   font-weight: 600;
 }
 
 .table tr:hover {
-  background: rgba(0,0,0,0.02);
+  background: #f8fafc;
 }
 
-/* =========================
-   PAGINATION
-========================= */
+/* ====== PAGINATION ====== */
 
 .pagination {
   display: flex;
@@ -330,7 +316,7 @@ input:focus {
   padding: 6px 12px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  background: var(--card-bg);
+  background: white;
 }
 
 .page-btn.active {
@@ -338,20 +324,21 @@ input:focus {
   color: white;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* ====== FOOTER ====== */
 
 .footer {
   background: var(--footer-bg);
-  color: #cbd5f5;
+  border-top: 1px solid var(--border-color);
   padding: var(--space-lg);
   margin-top: auto;
+  color: #4b5563;
 }
 
 .footer-grid {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .footer-bottom {
@@ -360,9 +347,7 @@ input:focus {
   opacity: 0.7;
 }
 
-/* =========================
-   TOAST
-========================= */
+/* ====== TOAST ====== */
 
 .toast {
   position: fixed;
@@ -383,9 +368,7 @@ input:focus {
   to { transform: translateX(0); opacity: 1; }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ====== RESPONSIVE ====== */
 
 @media (max-width: 991px) {
   .main-wrapper {
@@ -393,7 +376,7 @@ input:focus {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 425px) {
 
   .content {
     padding: var(--space-lg);
